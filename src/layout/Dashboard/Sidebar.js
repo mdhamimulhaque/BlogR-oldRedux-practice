@@ -11,7 +11,7 @@ const Sidebar = () => {
           <Link to='/dashboard'>Product List</Link>
         </li>
         <li>
-          <Link to='add-product'> Add Product </Link>
+          <Link to='/add-product'> Add Product </Link>
         </li>
         <li className='mt-auto'>
           <Link to='/'> Back to Home </Link>
