@@ -1,7 +1,8 @@
-import { LOAD_BLOGS_DATA } from "../actionTypes/actionTypes"
+import { ADD_READING_HISTORY, LOAD_BLOGS_DATA } from "../actionTypes/actionTypes"
 
 const initialState = {
-    blogs: []
+    blogs: [],
+    ReadingHistory: []
 }
 
 export const blogReducer = (state = initialState, action) => {
@@ -10,7 +11,18 @@ export const blogReducer = (state = initialState, action) => {
             return {
                 ...state,
                 blogs: action.payload
+            };
+        case ADD_READING_HISTORY:
+            const alreadyAdded = state.ReadingHistory.find(data => data._id === action.payload._id);
+
+            if (alreadyAdded) {
+                return state
             }
+
+            return {
+                ...state,
+                ReadingHistory: [...state.ReadingHistory, action.payload]
+            };
         default:
             return state;
     }

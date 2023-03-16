@@ -13,7 +13,7 @@ const Home = () => {
     dispatch(loadBlogsData())
   }, [dispatch])
 
-
+  console.log(blogsData)
   let content;
 
   if (ascending) {

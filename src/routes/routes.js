@@ -4,6 +4,7 @@ import Main from "../layout/Main/Main";
 import AddBlog from "../pages/Dashboard/AddBlog";
 import BlogList from "../pages/Dashboard/BlogList";
 import Home from "../pages/Main/Home";
+import ReadingHistory from "../pages/Main/ReadingHistory";
 
 
 const routes = createBrowserRouter([
@@ -14,6 +15,10 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/reading-history",
+        element: <ReadingHistory />,
       },
 
     ],
