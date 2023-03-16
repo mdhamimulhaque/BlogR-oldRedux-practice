@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineEdit, AiOutlineEye, AiOutlineDelete } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { loadBlogsData } from "../../redux/thunk/fetchBlogs";
 
 const BlogList = () => {
+  const blogsData = useSelector((state) => state.blogs.blogs);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(loadBlogsData())
+  }, [dispatch])
 
   return (
     <div class='flex flex-col justify-center items-center h-full w-full '>
@@ -17,10 +24,10 @@ const BlogList = () => {
               <tr>
                 <th></th>
                 <th class='p-2'>
-                  <div class='font-semibold text-left'>User Name</div>
+                  <div class='font-semibold text-left'>Image</div>
                 </th>
                 <th class='p-2'>
-                  <div class='font-semibold text-left'>Text</div>
+                  <div class='font-semibold text-left'>Title</div>
                 </th>
                 <th class='p-2'>
                   <div class='font-semibold text-left'>Published</div>
@@ -33,30 +40,35 @@ const BlogList = () => {
 
             <tbody class='text-sm divide-y divide-gray-100'>
               {/* {products.map(({ model, brand, price, status, _id }) => ( */}
-              <tr>
-                <td class='p-2'>
-                  <input type='checkbox' class='w-5 h-5' value='id-1' />
-                </td>
-                <td class='p-2'>
-                  <div class='font-medium text-gray-800'>Himel</div>
-                </td>
-                <td class='p-2'>
-                  <div class='text-left capitalize'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quasi excepturi expedita atque omnis enim?</div>
-                </td>
+              {
+                blogsData.map(({ title, description, img, date }) => <tr>
+                  <td class='p-2'>
+                    <input type='checkbox' class='w-5 h-5' value='id-1' />
+                  </td>
+                  <td class='p-2'>
+                    <div class='w-16 h-16 rounded flex items-center'>
+                      <img className="w-full rounded" src={img} alt="" />
+                    </div>
+                  </td>
+                  <td class='p-2'>
+                    <div class='text-left capitalize'>{title}</div>
+                  </td>
 
-                <td class='p-2'>
-                  <div class='text-left font-medium text-green-500'>
-                    3/14/2023
-                  </div>
-                </td>
-                <td class='p-2'>
-                  <div class='flex justify-center gap-3 text-xl'>
-                    <AiOutlineEye className="text-green-400" />
-                    <AiOutlineEdit className="text-blue-400" />
-                    <AiOutlineDelete className="text-red-400" />
-                  </div>
-                </td>
-              </tr>
+                  <td class='p-2'>
+                    <div class='text-left font-medium text-green-500'>
+                      {date}
+                    </div>
+                  </td>
+                  <td class='p-2'>
+                    <div class='flex justify-center gap-3 text-xl'>
+                      <AiOutlineEye className="text-green-400" />
+                      <AiOutlineEdit className="text-blue-400" />
+                      <AiOutlineDelete className="text-red-400" />
+                    </div>
+                  </td>
+                </tr>)
+              }
+
               {/* ))} */}
             </tbody>
           </table>

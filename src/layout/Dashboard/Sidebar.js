@@ -8,10 +8,10 @@ const Sidebar = () => {
         <li className="text-xl font-bold"><Link to='/'>BlogR</Link></li>
 
         <li>
-          <Link to='/dashboard'>Product List</Link>
+          <Link to='/dashboard'>Blog List</Link>
         </li>
         <li>
-          <Link to='/add-product'> Add Product </Link>
+          <Link to='/dashboard/add-blog'> Add New Blog </Link>
         </li>
         <li className='mt-auto'>
           <Link to='/'> Back to Home </Link>

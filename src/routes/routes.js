@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import Main from "../layout/Main/Main";
-import AddBlog from "../pages/Dashboard/AddBlog";
-import BlogList from "../pages/Dashboard/BlogList";
 import Home from "../pages/Main/Home";
 import ReadingHistory from "../pages/Main/ReadingHistory";
+import BlogList from '../pages/Dashboard/BlogList';
+import AddBlog from '../pages/Dashboard/AddBlog';
 
 
 const routes = createBrowserRouter([
@@ -23,20 +23,20 @@ const routes = createBrowserRouter([
 
     ],
   },
-  // {
-  //   path: "/dashboard",
-  //   element: <Dashboard />,
-  //   children: [
-  //     {
-  //       path: "/dashboard",
-  //       element: <BlogList />,
-  //     },
-  //     {
-  //       path: "/add-blog",
-  //       element: <AddBlog />,
-  //     },
-  //   ],
-  // },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <BlogList />,
+      },
+      {
+        path: "/dashboard/add-blog",
+        element: <AddBlog />,
+      },
+    ],
+  },
 ]);
 
 export default routes;
