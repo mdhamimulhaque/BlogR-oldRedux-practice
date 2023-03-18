@@ -1,4 +1,4 @@
-import { ADD_BLOG, ADD_READING_HISTORY, LOAD_BLOGS_DATA } from "../actionTypes/actionTypes"
+import { ADD_BLOG, ADD_READING_HISTORY, DELETE_BLOG, LOAD_BLOGS_DATA } from "../actionTypes/actionTypes"
 
 const initialState = {
     blogs: [],
@@ -16,6 +16,11 @@ export const blogReducer = (state = initialState, action) => {
             return {
                 ...state,
                 blogs: [...state.blogs, action.payload]
+            };
+        case DELETE_BLOG:
+            return {
+                ...state,
+                blogs: state.blogs.filter(blog => blog._id !== action.payload)
             };
         case ADD_READING_HISTORY:
             const alreadyAdded = state.ReadingHistory.find(data => data._id === action.payload._id);

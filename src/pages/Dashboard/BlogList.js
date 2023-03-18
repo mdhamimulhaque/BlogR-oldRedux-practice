@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { AiOutlineEdit, AiOutlineEye, AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { DeleteBlogData } from "../../redux/thunk/DeleteBlog";
 import { loadBlogsData } from "../../redux/thunk/fetchBlogs";
 
 const BlogList = () => {
@@ -61,9 +62,11 @@ const BlogList = () => {
                   </td>
                   <td className='p-2'>
                     <div className='flex justify-center gap-3 text-xl'>
-                      <AiOutlineEye className="text-green-400" />
-                      <AiOutlineEdit className="text-blue-400" />
-                      <AiOutlineDelete className="text-red-400" />
+                      <AiOutlineEye className="text-green-400 cursor-pointer" />
+                      <AiOutlineEdit className="text-blue-400 cursor-pointer" />
+                      <AiOutlineDelete
+                        onClick={() => dispatch(DeleteBlogData(_id))}
+                        className="text-red-400 cursor-pointer" />
                     </div>
                   </td>
                 </tr>)
