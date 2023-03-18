@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { AddBlogData } from "../../redux/thunk/AddBlogData";
 
 const AddBlog = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   // ---> date
   const today = new Date();
   let day = today.getDate();
@@ -22,6 +24,7 @@ const AddBlog = () => {
       date: date
     };
     dispatch(AddBlogData(blog));
+    navigate('/dashboard')
   };
 
   return (

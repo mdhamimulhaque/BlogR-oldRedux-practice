@@ -26,3 +26,9 @@ export const deleteBlog = (id) => {
         payload: id
     }
 }
+export const updatePost = (post) => {
+    return {
+        type: DELETE_BLOG,
+        payload: post
+    }
+}

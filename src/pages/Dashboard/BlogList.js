@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { AiOutlineEdit, AiOutlineEye, AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { DeleteBlogData } from "../../redux/thunk/DeleteBlog";
 import { loadBlogsData } from "../../redux/thunk/fetchBlogs";
 
@@ -63,7 +64,8 @@ const BlogList = () => {
                   <td className='p-2'>
                     <div className='flex justify-center gap-3 text-xl'>
                       <AiOutlineEye className="text-green-400 cursor-pointer" />
-                      <AiOutlineEdit className="text-blue-400 cursor-pointer" />
+                      <Link to={`/dashboard/edit-post/${_id}`}><AiOutlineEdit
+                        className="text-blue-400 cursor-pointer" /></Link>
                       <AiOutlineDelete
                         onClick={() => dispatch(DeleteBlogData(_id))}
                         className="text-red-400 cursor-pointer" />
